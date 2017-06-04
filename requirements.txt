@@ -1,10 +1,8 @@
 pylint
 django
 pylint-django
+numpy
 imutils
 Pillow
-imutils
-skimage
-opencv-python
-opencv-contrib-python
-numpy
+scipy
+scikit-image
