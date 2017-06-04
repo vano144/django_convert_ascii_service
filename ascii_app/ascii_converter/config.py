@@ -2,6 +2,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "resources", "test_data")
+IDEAL_DATA_DIR = os.path.join(BASE_DIR, "resources", "ideal_test_data")
 OUTPUT_DIR = os.path.join(BASE_DIR, "resources", "output")
 FOLDER_RESULT = "/tmp"
 ASCII_FILE_NAME_OTHER = "result_ascii_other.txt"
