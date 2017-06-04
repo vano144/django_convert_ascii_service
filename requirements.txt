@@ -1,0 +1,10 @@
+pylint
+django
+pylint-django
+imutils
+Pillow
+imutils
+skimage
+opencv-python
+opencv-contrib-python
+numpy

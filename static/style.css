@@ -1,0 +1,84 @@
+html, body {
+    margin: 0;
+    width: 100%; height: 100%;
+}
+body {
+    padding: 1em;
+}
+
+.block {
+    background: #f7f7f7;
+    padding: 1em;
+    border-radius: 1em;
+}
+
+.help-text {
+    padding: 0.5em;
+    margin: 0;
+}
+
+#filename {
+    padding: 0.1em;
+    font-family: Consolas, monospace;
+    margin: 0;
+}
+
+#file {
+    display: none;
+}
+
+#c {
+    border: 1px solid #843534;
+    background: url('checkers.png') #333;
+    margin: 1em;
+    color: #fff;
+}
+
+#result_text {
+    border: 1px solid black;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+#text_list_container {
+    min-width: 40em;
+    width: 50%;
+}
+
+#text_list_container.no_edit .edit_btn {
+    display: none;
+}
+
+.text_region {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-start;
+    padding: 0.5em;
+}
+.text_region:hover {
+    background: #ddd;
+}
+.text_region.current {
+    background: #88bbff;
+}
+.text_region .text_label {
+    flex-grow: 1;
+    font-family: Consolas, monospace;
+}
+.text_region input[type='button'] {
+    margin-left: 0.5em;
+}
+
+#fontSizeSlider,
+#font_size_label {
+    margin-left: 2em;
+}
+#fontSizeSlider .slider-selection {
+    background: #0088ff;
+}
+#fontSizeSlider .slider-handle {
+    background: #0088ff;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Converter Interface</title>
+    <script>
+		paceOptions = {
+			ajax: true,
+			document: true,
+			eventLag: true,
+			elements: false
+		};
+    </script>
+    <script src="lib/pace.min.js"></script>
+    <script src="lib/FileSaver.min.js"></script>
+    <script src="lib/cropper.js"></script>
+    <script src="lib/timer.js"></script>
+    <script src="lib/bootstrap-slider.min.js"></script>
+    <script src="settings.js"></script>
+    <script src="text.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap-slider.min.css">
+    <link rel="stylesheet" href="lib/pace.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<form id="f" class="block">
+    <p id="filename">No file selected...</p>
+    <div id="tools_panel">
+        <input type="file" id="file" accept="image/*, .jpg, .png, .bmp, .jpeg">
+        <input type="button" id="open_btn" value="Open" class="btn btn-primary">
+        <input type="button" id="reset_btn" value="Reset Cropping" class="btn btn-outline-primary">
+        <input type="button" id="text_mode_btn" value="Mark Text Areas" class="btn btn-outline-primary">
+        <input type="button" id="process_btn" value="Process" class="btn btn-success">
+    </div>
+    <div id="texts_panel">
+        <input type="button" id="text_add_btn" value="Add Area" class="btn btn-primary">
+        <input type="button" id="text_remove_all_btn" value="Remove All Areas" class="btn btn-danger">
+        <input type="button" id="text_done_btn" value="Done" class="btn btn-success">
+    </div>
+
+    <div id="container">
+        <canvas id="c">Your browser is too old!</canvas>
+    </div>
+
+    <div id="text_list_container" class="no_edit">
+        <div class="text_region">
+            <div class="text_label">Rect: { x:0, y: 0; width: 100, height: 20 }</div>
+            <input type="button" value="Show" class="btn btn-primary">
+            <input type="button" value="Edit" class="btn btn-primary edit_btn">
+            <input type="button" value="Remove" class="btn btn-danger">
+        </div>
+    </div>
+
+    <p class="help-text">
+        Select a file with "Open" button, then crop the area to process (or leave the whole image uncropped),
+        then click "Process" and wait a moment to get processed output in text form and image.
+    </p>
+    <p class="help-text">
+        You can mark rectangular areas with text on your image to help the algorithm.
+        Click 'Mark Text Areas', then click 'Add Area' and locate the area.
+        List of all created areas is shown under the image.
+    </p>
+</form>
+
+<div id="response" class="block">
+    <button type="button" class="btn btn-primary" id="one_more_btn">Process one more image!</button>
+    <button type="button" class="btn btn-outline-primary" id="save_text_btn">Save as text</button>
+    <a role="button" class="btn btn-outline-primary" id="save_image_btn" download>Save as image</a>
+    <hr>
+    <p class="help-text">
+        You image was processed, and here is the output as image:
+    </p>
+    <img alt="Result image" id="result_img">
+    <p class="help-text">
+        And in text form
+        (use this slider to adjust font size):
+        <input id="font_size_slider"
+               data-slider-id='fontSizeSlider'
+               type="text" />
+        <span id="font_size_label">14pt</span>
+    </p>
+    <pre id="result_text">The result text will appear here.</pre>
+
+</div>
+
+</body>
+</html>
