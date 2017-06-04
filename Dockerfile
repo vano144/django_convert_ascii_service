@@ -8,3 +8,8 @@ RUN apt-get update && \
 
 RUN pip install -r requirements.txt
 
+RUN mv static /www/data/
+
+RUN cp web_server_nginx.conf /etc/nginx/sites-available/ &&
+    ln -s /etc/nginx/sites-available/web_server_nginx.conf /etc/nginx/sites-enabled/
+

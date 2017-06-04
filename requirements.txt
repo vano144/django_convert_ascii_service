@@ -6,3 +6,4 @@ imutils
 Pillow
 scipy
 scikit-image
+uwsgi

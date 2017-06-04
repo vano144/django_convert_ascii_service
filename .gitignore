@@ -10,6 +10,7 @@ __pycache__/
 .DS_Store
 .idea/
 db.sqlite3
+web_server_nginx.conf
 
 
 # Distribution / packaging
