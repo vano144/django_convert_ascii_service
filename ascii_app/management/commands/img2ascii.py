@@ -1,6 +1,6 @@
 ##
 # manage.py command
-# TODO: link to doc
+# https://github.com/vano144/django_convert_ascii_service#img2ascii
 from ascii_app.ascii_converter.helpers import convert_image_to_ascii
 from ascii_app.utils import check_commands_arguments
 from django.core.management.base import BaseCommand

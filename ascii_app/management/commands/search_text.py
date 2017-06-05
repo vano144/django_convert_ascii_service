@@ -1,6 +1,6 @@
 ##
 # manage.py command
-# TODO: link to doc
+# https://github.com/vano144/django_convert_ascii_service#search_text
 from ascii_app.ascii_converter.text_search import TextSearcher
 from ascii_app.utils import check_commands_arguments, get_extension_by_filename
 from ascii_app.ascii_converter.utils import get_tmp_file_name

@@ -1,6 +1,6 @@
 ##
 # manage.py command
-# TODO: link to doc
+# https://github.com/vano144/django_convert_ascii_service#pre_process
 from ascii_app.ascii_converter.helpers import process_image
 from ascii_app.utils import check_commands_arguments
 from django.core.management.base import BaseCommand

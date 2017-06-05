@@ -1,6 +1,6 @@
 ##
 # manage.py command
-# TODO: link to doc
+# https://github.com/vano144/django_convert_ascii_service#extract_skeleton
 from ascii_app.ascii_converter.helpers import process_image
 from ascii_app.ascii_converter.helpers import skeletonization
 from ascii_app.utils import check_commands_arguments
