@@ -69,4 +69,34 @@ Example of json:
 - `image`: image url (either path or `data:image/png;base64,`-like)
 
 
-## command line tools ##
+## command line tools
+
+### extract_skeleton
+
+      python3 manage.py extract_skeleton <input_img_path> <output_img_path>
+      
+  Extract skeleton from image to image, which is located by `output_img_path`
+
+### img2ascii
+
+      python3 manage.py img2ascii <input_img_path> <output_txt_path> [--to_console]
+  
+  Convert image to ascii ans save it in txt file by path `output_txt_path`. Apart from it, this cmd tools allow you to output result in console by giving to cmd special file.
+
+### pre_process
+
+      python3 manage.py pre_process <input_img_path> <output_img_path>
+      
+  Apply preprocess on image and save result to `output_img_path`
+
+### search_text
+      
+      python3 manage.py search_text <input_img_path> [--save]
+      
+  Search and highlight (in future delete) areas with texts. In case of passing extra argument, this cmd tool only save it to filepath, which will be displayed after the end of program.
+
+### txt2img
+
+      python3 manage.py txt2img <input_txt_path> <output_img_path>
+  
+  Convert txt file to image 
