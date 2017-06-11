@@ -11,7 +11,8 @@ import imutils
 class Command(BaseCommand):
     help = '0-Preprocess' \
            '1-Skelet' \
-           '2-ASCII'
+           '2-ASCII' \
+           '3-Just comparing'
 
     def add_arguments(self, parser):
         parser.add_argument('original_path')
@@ -24,11 +25,13 @@ class Command(BaseCommand):
         mode = int(options['mode'])
         if mode == 0:
             Metric.compare_img(original_path, ideal_path)
-            return 0
         elif mode == 1:
             Metric.compare_skeletonization(original_path, ideal_path)
         elif mode == 2:
             Metric.compare_ascii(original_path, ideal_path)
+        elif mode == 3:
+            Metric.compare_init_images(original_path, ideal_path)
         else:
             raise Exception("Not implemented mode")
+        return 0
 

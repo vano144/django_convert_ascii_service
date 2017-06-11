@@ -135,6 +135,22 @@ class Metric:
         # pil_image2 = Image.fromarray(ideal_img)
         return Metric.calc_metrics(original_img, ideal_img, 255, stage_name=stage_name)
 
+
+    ##
+    # Static method, which calculates metric between two images
+    # @param first_img_path path to original image
+    # @param second_img_path path to ideal image
+    # @return float value of metrics
+    # @error AssertionError
+    @staticmethod
+    def compare_init_images(first_img_path, second_img_path):
+        assert os.path.exists(first_img_path)
+        assert os.path.exists(second_img_path)
+        stage_name = "Just comparing"
+        original_img = cv2.imread(first_img_path, 0)
+        ideal_img = cv2.imread(second_img_path, 0)
+        return Metric.calc_metrics(original_img, ideal_img, 255, stage_name=stage_name)
+
     ##
     # Static method, which calculates metric for stage - Skeletonization
     # @param original_img_path path to original image
