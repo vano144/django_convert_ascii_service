@@ -7,7 +7,7 @@ import cv2
 import uuid
 import os
 import numpy as np
-
+from PIL import Image
 
 ##
 # @class Metric
@@ -37,20 +37,22 @@ class Metric:
     @staticmethod
     def check_nearest_neighbour(cur_pixel, region, original_image, dominant_color):
         h, w = PreprocessImageAPI.get_height_and_width(original_image)
-        left_width = cur_pixel[0] - region
-        right_width = cur_pixel[0] + region
-        top_height = cur_pixel[1] - region
-        bottom_height = cur_pixel[1] + region
+        left_width = cur_pixel[1] - region
+        right_width = cur_pixel[1] + region
+        top_height = cur_pixel[0] - region
+        bottom_height = cur_pixel[0] + region
         if left_width < 0 or top_height < 0 or right_width >= w or bottom_height >= h:
             return 0
 
-        for i in range(left_width, right_width + 1):
+        for i in range(top_height, bottom_height):
+
             if original_image[i][cur_pixel[1] + region] != dominant_color:
                 return region
             if original_image[i][cur_pixel[1] - region] != dominant_color:
                 return region
 
-        for j in range(top_height, bottom_height + 1):
+        for j in range(left_width, right_width):
+
             if original_image[cur_pixel[0] + region - 1][j] != dominant_color:
                 return region
             if original_image[cur_pixel[0] - region + 1][j] != dominant_color:
@@ -88,12 +90,12 @@ class Metric:
     # @return float value of metrics
     @staticmethod
     def calc_metrics(original_img, ideal_img, dominant_color, stage_name):
-        w, h = ideal_img.shape
+        h, w = PreprocessImageAPI.get_height_and_width(ideal_img)
         distance = 0
         amount = 0
         amount_bad_cell = 0
-        for i in range(w-1):
-            for j in range(h-1):
+        for i in range(0, h-1):
+            for j in range(0, w-1):
                 if ideal_img[i][j] != dominant_color:
                     amount += 1
                     distance_res = Metric.find_nearest_neighbour(i, j, original_img, dominant_color)
@@ -126,7 +128,7 @@ class Metric:
         assert os.path.exists(original_img_path)
         assert os.path.exists(ideal_img_path)
         stage_name = "PreProcessing"
-        original_img = cv2.imread(original_img_path)
+        original_img = cv2.imread(original_img_path, 0)
         original_img = process_image(original_img)
         ideal_img = cv2.imread(ideal_img_path, 0)
         # pil_image1 = Image.fromarray(original_img)
@@ -144,7 +146,7 @@ class Metric:
         assert os.path.exists(original_img_path)
         assert os.path.exists(ideal_img_path)
         stage_name = "Skeletonization"
-        original_img = cv2.imread(original_img_path)
+        original_img = cv2.imread(original_img_path, 0)
         original_img = process_image(original_img)
         original_img_skeleton, _ = skeletonization(original_img)
         ideal_img = cv2.imread(ideal_img_path, 0)
@@ -161,7 +163,7 @@ class Metric:
         assert os.path.exists(original_img_path)
         assert os.path.exists(ideal_img_path)
         stage_name = "Ascii"
-        original_img = cv2.imread(original_img_path)
+        original_img = cv2.imread(original_img_path, 0)
         ideal_img = cv2.imread(ideal_img_path, 0)
         ascii_img, path_to_ascii, _ = convert_image_to_ascii(original_img)
         open_cv_image = np.array(ascii_img)
